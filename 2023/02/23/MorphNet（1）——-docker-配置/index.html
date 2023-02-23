@@ -187,7 +187,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-02-23 16:11:07</span>
+        <span class="pc">2023-02-23 16:33:18</span>
     </span>
     
     
@@ -226,12 +226,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>560 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>422 Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>2 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>1 Mins</span>
         </span>
     
     
@@ -254,7 +254,12 @@
 
 <p>-f	指示Dockerfile位置</p>
 <p>-t&#x2F;-tag	镜像的名字及标签，通常 name:tag 或者 name 格式；</p>
-<p>![image-20230223下午33438294](&#x2F;Users&#x2F;matrix&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230223下午33438294.png)</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://pic6.58cdn.com.cn/nowater/webim/big/n_v231f8478836b84ff99f3e72687ce1ba46.png"
+                      alt="image-20230223下午33438294.png"
+                ></p>
 <p>FROM 镜像源，由于是国外镜像源，build会出现无法解析的问题，需要进行换源处理，在daemon配置文件中加入下面的内容解决</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;registry-mirrors&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="string">&quot;https://registry.docker-cn.com&quot;</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
 
@@ -262,18 +267,43 @@
 <p>将软链接和pip3更新写入后发现还是无法执行，httpcommunicate超时，手动延长等待时间依旧失效，但又不能使用国外源（会导致上面FROM失效或者numpy等找不到对应版本），只能折中使用</p>
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">RUN</span><span class="language-bash"> pip3 install -i [国内源] --upgrade pip </span></span><br></pre></td></tr></table></figure>
 
-<p>![image-20230223下午34019454](&#x2F;Users&#x2F;matrix&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230223下午34019454.png)</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://pic7.58cdn.com.cn/nowater/webim/big/n_v2c94527780be04b6db167dac4e5f221af.png"
+                      alt="image-20230223下午34019454.png"
+                ></p>
 <p>构建成功后使用</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvidia-docker run -it --rm -v $(pwd):/mnt -p 5001:6006 tensorflow:1.15</span><br></pre></td></tr></table></figure>
 
 <p>虽然nvidia-docker2等已经配置完成，依旧失败</p>
-<p>![image-20230223下午35920621](&#x2F;Users&#x2F;matrix&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230223下午35920621.png)</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://pic1.58cdn.com.cn/nowater/webim/big/n_v27320817f43db49b197a223f057d4426f.png"
+                      alt="image-20230223下午35920621.png"
+                ></p>
 <p>后来尝试使用sudo root权限下运行（因为发现nvidia-container-cli是root用户下包，普通docker用户无法访问），还是失败，出现无images错误，后通过以下指令发现root镜像和普通用户镜像是分开管理的</p>
-<p>![image-20230223下午40123375](&#x2F;Users&#x2F;matrix&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230223下午40123375.png)</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://pic8.58cdn.com.cn/nowater/webim/big/n_v22a7b123195e9406ba754315375ab1483.png"
+                      alt="image-20230223下午40123375.png"
+                ></p>
 <p>于是在root用户下重新安装镜像，运行，成功</p>
-<p>![image-20230223下午40323310](&#x2F;Users&#x2F;matrix&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230223下午40323310.png)</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://pic3.58cdn.com.cn/nowater/webim/big/n_v2b4927bd9157d49e581fc53969d5c1434.png"
+                      alt="image-20230223下午40323310.png"
+                ></p>
 <p>但是貌似docker desktop并不能识别出root用户下的containers，images倒是可以，后面在看看啥情况。</p>
-<p>![image-20230223下午41038772](&#x2F;Users&#x2F;matrix&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20230223下午41038772.png)</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://pic5.58cdn.com.cn/nowater/webim/big/n_v254be4cc048a443eb98767b70e5ae36d1.png"
+                      alt="image-20230223下午41038772.png"
+                ></p>
 
             </div>
 
