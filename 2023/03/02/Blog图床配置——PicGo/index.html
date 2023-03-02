@@ -9,7 +9,7 @@
     
     <title>
         
-            MorphNet（1）—— docker 配置 |
+            Blog图床配置——PicGo |
         
         LGT&#39;s blog
     </title>
@@ -159,7 +159,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">MorphNet（1）—— docker 配置</span>
+                <span class="title-hover-animation">Blog图床配置——PicGo</span>
             </div>
 
             
@@ -181,26 +181,15 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2023-02-23 15:21:03</span>
-        <span class="mobile">2023-02-23 15:21</span>
+        <span class="pc">2023-03-02 16:09:02</span>
+        <span class="mobile">2023-03-02 16:09</span>
     </span>
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-02-23 16:33:18</span>
+        <span class="pc">2023-03-02 16:49:57</span>
     </span>
     
-    
-        <span class="article-categories article-meta-item">
-            <i class="fas fa-folder"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/categories/MorphNet-%E5%88%86%E6%9E%90/">MorphNet 分析</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
     
     
         <span class="article-tags article-meta-item">
@@ -208,15 +197,15 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/MorphNet/">MorphNet</a>&nbsp;
+                        <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91OSS/">阿里云OSS</a>&nbsp;
                     </li>
                 
                     <li>
-                        | <a href="/tags/docker/">docker</a>&nbsp;
+                        | <a href="/tags/PicGo/">PicGo</a>&nbsp;
                     </li>
                 
                     <li>
-                        | <a href="/tags/ubuntu/">ubuntu</a>&nbsp;
+                        | <a href="/tags/MacOS/">MacOS</a>&nbsp;
                     </li>
                 
             </ul>
@@ -226,7 +215,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>422 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>514 Words</span>
         </span>
     
     
@@ -249,61 +238,95 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <h2 id="关于docker"><a href="#关于docker" class="headerlink" title="关于docker"></a>关于docker</h2><h3 id="一、failure"><a href="#一、failure" class="headerlink" title="一、failure"></a>一、failure</h3><p>由于经验不足，在linux端docker配置和nvidia-docker上吃了不少亏，没有详细看说明文档也导致实验进展缓慢，于是摸了摸docker，记录问题并给出个人理解。</p>
-<h3 id="二、相关问题"><a href="#二、相关问题" class="headerlink" title="二、相关问题"></a>二、相关问题</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -f Dockerfile -t tensorflow:1.15 </span><br></pre></td></tr></table></figure>
+                <h1 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h1><h3 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h3><p>​	图床是用来解决md文件和html组成的网页图片缺失问题，由于图片资源相比文字的高存储占用，纯文本和图片视频的解耦合能更好得解决这种问题，将图片转为云端链接，更加简单高效。</p>
+<p>​	第三方插件和图床多免费使用，但链接和图片的时效性难以保证，时间一长容易失效，执行购买云端OSS资源进行图床配置是兼顾稳定性和效果的平衡之选。</p>
+<p>​	（即刻图床是我之前使用的，图片2周后失效了，遂转向阿里云图床方案）</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="http://lgt-blog.oss-cn-nanjing.aliyuncs.com/img/image-20230302%E4%B8%8B%E5%8D%8842408445.png"
+                      alt="image-20230302下午42408445"
+                ></p>
+<h3 id="二、阿里云OSS购买"><a href="#二、阿里云OSS购买" class="headerlink" title="二、阿里云OSS购买"></a>二、阿里云OSS购买</h3><p>​		点击对象存储OSS<img  
+                     lazyload
+                     alt="image"
+                     data-src="http://lgt-blog.oss-cn-nanjing.aliyuncs.com/img/image-20230302%E4%B8%8B%E5%8D%8842530965.png"
+                      alt="image-20230302下午42530965"
+                ></p>
+<p>​	购买40G包月包2年18块（一顿饭钱的价格感觉还可以🐶）</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="http://lgt-blog.oss-cn-nanjing.aliyuncs.com/img/image-20230302%E4%B8%8B%E5%8D%8842821261.png"
+                      alt="image-20230302下午42821261"
+                ></p>
+<p>​	创建Bucket，注意读写权限设置为公共读，服务端加密方式设置为无</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="http://lgt-blog.oss-cn-nanjing.aliyuncs.com/img/image-20230302%E4%B8%8B%E5%8D%8843056204.png"
+                      alt="image-20230302下午43056204"
+                ></p>
+<p>​	在对应bucket的文件列表中创建img文件夹（以后要保存图片的位置）</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="http://lgt-blog.oss-cn-nanjing.aliyuncs.com/img/image-20230302%E4%B8%8B%E5%8D%8843225216.png"
+                      alt="image-20230302下午43225216"
+                ></p>
+<p>​	概览这里的外网访问和bucket域名是后面要使用的信息</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="http://lgt-blog.oss-cn-nanjing.aliyuncs.com/img/image-20230302%E4%B8%8B%E5%8D%8842944167.png"
+                      alt="image-20230302下午42944167"
+                ></p>
+<p>​	Accesskey管理获取相关密钥</p>
+<h3 id="三、PicGo下载-amp-配置"><a href="#三、PicGo下载-amp-配置" class="headerlink" title="三、PicGo下载&amp;配置"></a>三、PicGo下载&amp;配置</h3><h4 id="1-下载"><a href="#1-下载" class="headerlink" title="1. 下载"></a>1. 下载</h4><p>​	<a class="link"   target="_blank" rel="noopener" href="https://github.com/Molunerfinn/picgo/releases" >下载链接<i class="fas fa-external-link-alt"></i></a></p>
+<p>​	这里MacOS可以直接使用以下指令安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install --cask picgo</span><br></pre></td></tr></table></figure>
 
-<p>-f	指示Dockerfile位置</p>
-<p>-t&#x2F;-tag	镜像的名字及标签，通常 name:tag 或者 name 格式；</p>
-<p><img  
-                     lazyload
-                     alt="image"
-                     data-src="https://pic6.58cdn.com.cn/nowater/webim/big/n_v231f8478836b84ff99f3e72687ce1ba46.png"
-                      alt="image-20230223下午33438294.png"
-                ></p>
-<p>FROM 镜像源，由于是国外镜像源，build会出现无法解析的问题，需要进行换源处理，在daemon配置文件中加入下面的内容解决</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;registry-mirrors&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="string">&quot;https://registry.docker-cn.com&quot;</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+<p>​	由于MacOS的软件签名机制，安装后无法打开未签名的软件（会提醒软件已损坏，请移动到垃圾桶），可以使用以下指令绕过限制</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xattr -cr /Applications/PicGo.app</span><br></pre></td></tr></table></figure>
 
-<p>但 ln -s 软连接又不能运行了，后来解决了进入docker后通过 whtich python 发现没有python2版本，所以不能执行</p>
-<p>将软链接和pip3更新写入后发现还是无法执行，httpcommunicate超时，手动延长等待时间依旧失效，但又不能使用国外源（会导致上面FROM失效或者numpy等找不到对应版本），只能折中使用</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">RUN</span><span class="language-bash"> pip3 install -i [国内源] --upgrade pip </span></span><br></pre></td></tr></table></figure>
-
+<h4 id="2-配置"><a href="#2-配置" class="headerlink" title="2. 配置"></a>2. 配置</h4><p><img  
+                     lazyload
+                     alt="image"
+                     data-src="http://lgt-blog.oss-cn-nanjing.aliyuncs.com/img/image-20230302%E4%B8%8B%E5%8D%8844007154.png"
+                      alt="image-20230302下午44007154"
+                ></p>
+<p>​	使用（二）步骤中的相关信息进行填写后设为默认图床即可</p>
+<p>​	<strong>注意⚠️：</strong></p>
+<ul>
+<li>keyid和keysecret是Accesskey内容</li>
+<li>bucket为bucket的名称</li>
+<li>存储区域注意要去掉后面的后缀（aliyun.com）</li>
+<li>自定义域名即为http:&#x2F;&#x2F;[ Bucket域名 ]</li>
+</ul>
+<h3 id="四、Typora联动"><a href="#四、Typora联动" class="headerlink" title="四、Typora联动"></a>四、Typora联动</h3><p>​	打开typora -&gt; settings -&gt; 图像 -&gt; <strong>上传服务</strong></p>
 <p><img  
                      lazyload
                      alt="image"
-                     data-src="https://pic7.58cdn.com.cn/nowater/webim/big/n_v2c94527780be04b6db167dac4e5f221af.png"
-                      alt="image-20230223下午34019454.png"
+                     data-src="http://lgt-blog.oss-cn-nanjing.aliyuncs.com/img/image-20230302%E4%B8%8B%E5%8D%8844445679.png"
+                      alt="image-20230302下午44445679"
                 ></p>
-<p>构建成功后使用</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvidia-docker run -it --rm -v $(pwd):/mnt -p 5001:6006 tensorflow:1.15</span><br></pre></td></tr></table></figure>
-
-<p>虽然nvidia-docker2等已经配置完成，依旧失败</p>
+<p>​	选择PicGo.app</p>
+<p>​	点击验证图片上床选项</p>
 <p><img  
                      lazyload
                      alt="image"
-                     data-src="https://pic1.58cdn.com.cn/nowater/webim/big/n_v27320817f43db49b197a223f057d4426f.png"
-                      alt="image-20230223下午35920621.png"
+                     data-src="http://lgt-blog.oss-cn-nanjing.aliyuncs.com/img/image-20230302%E4%B8%8B%E5%8D%8844543971.png"
+                      alt="image-20230302下午44543971"
                 ></p>
-<p>后来尝试使用sudo root权限下运行（因为发现nvidia-container-cli是root用户下包，普通docker用户无法访问），还是失败，出现无images错误，后通过以下指令发现root镜像和普通用户镜像是分开管理的</p>
+<p>​	使用方法</p>
 <p><img  
                      lazyload
                      alt="image"
-                     data-src="https://pic8.58cdn.com.cn/nowater/webim/big/n_v22a7b123195e9406ba754315375ab1483.png"
-                      alt="image-20230223下午40123375.png"
+                     data-src="http://lgt-blog.oss-cn-nanjing.aliyuncs.com/img/image-20230302%E4%B8%8B%E5%8D%8844801957.png"
+                      alt="image-20230302下午44801957"
                 ></p>
-<p>于是在root用户下重新安装镜像，运行，成功</p>
-<p><img  
-                     lazyload
-                     alt="image"
-                     data-src="https://pic3.58cdn.com.cn/nowater/webim/big/n_v2b4927bd9157d49e581fc53969d5c1434.png"
-                      alt="image-20230223下午40323310.png"
-                ></p>
-<p>但是貌似docker desktop并不能识别出root用户下的containers，images倒是可以，后面在看看啥情况。</p>
-<p><img  
-                     lazyload
-                     alt="image"
-                     data-src="https://pic5.58cdn.com.cn/nowater/webim/big/n_v254be4cc048a443eb98767b70e5ae36d1.png"
-                      alt="image-20230223下午41038772.png"
-                ></p>
+<p>​	点解上传所有本地图片即可，注意不要将文件重复上传（图片文件名称不能一致）</p>
+<p>​	<strong>Done</strong></p>
 
             </div>
 
@@ -313,15 +336,15 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="/tags/MorphNet/">#MorphNet</a>&nbsp;
+                            <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91OSS/">#阿里云OSS</a>&nbsp;
                         </li>
                     
                         <li class="tag-item">
-                            <a href="/tags/docker/">#docker</a>&nbsp;
+                            <a href="/tags/PicGo/">#PicGo</a>&nbsp;
                         </li>
                     
                         <li class="tag-item">
-                            <a href="/tags/ubuntu/">#ubuntu</a>&nbsp;
+                            <a href="/tags/MacOS/">#MacOS</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -330,29 +353,14 @@
             
                 <div class="article-nav">
                     
-                        <div class="article-prev">
-                            <a class="prev"
-                               rel="prev"
-                               href="/2023/03/02/MorphNet%EF%BC%882%EF%BC%89%E2%80%94%E2%80%94-MacOS%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"
-                            >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                                <span class="title flex-center">
-                                <span class="post-nav-title-item">MorphNet（2）—— MacOS深度学习</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                            </a>
-                        </div>
-                    
                     
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2023/02/22/Android%E6%89%8B%E6%9C%BAroot%E6%8C%87%E5%8D%97/"
+                               href="/2023/03/02/MorphNet%EF%BC%882%EF%BC%89%E2%80%94%E2%80%94-MacOS%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Android手机root指南</span>
+                                <span class="post-nav-title-item">MorphNet（2）—— MacOS深度学习</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                                 <span class="right arrow-icon flex-center">
@@ -371,7 +379,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8Edocker"><span class="nav-number">1.</span> <span class="nav-text">关于docker</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81failure"><span class="nav-number">1.1.</span> <span class="nav-text">一、failure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.</span> <span class="nav-text">二、相关问题</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E5%BA%8A"><span class="nav-number">1.</span> <span class="nav-text">图床</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%AE%80%E4%BB%8B"><span class="nav-number">1.0.1.</span> <span class="nav-text">一、简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%98%BF%E9%87%8C%E4%BA%91OSS%E8%B4%AD%E4%B9%B0"><span class="nav-number">1.0.2.</span> <span class="nav-text">二、阿里云OSS购买</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81PicGo%E4%B8%8B%E8%BD%BD-amp-%E9%85%8D%E7%BD%AE"><span class="nav-number">1.0.3.</span> <span class="nav-text">三、PicGo下载&amp;配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%B8%8B%E8%BD%BD"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">1. 下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E9%85%8D%E7%BD%AE"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">2. 配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81Typora%E8%81%94%E5%8A%A8"><span class="nav-number">1.0.4.</span> <span class="nav-text">四、Typora联动</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
 

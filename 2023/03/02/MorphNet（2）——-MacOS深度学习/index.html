@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Guangtong li">
+    
+    <title>
+        
+            MorphNet（2）—— MacOS深度学习 |
+        
+        LGT&#39;s blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/cool.png">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066cc","logo":"/images/lgt_logo.svg","favicon":"/images/cool.png","avatar":"/images/lgt_logo.svg","font_size":null,"font_family":null,"hover":{"shadow":false,"scale":true},"first_screen":{"enable":true,"header_transparent":true,"background_img":"/images/bg.svg","description":"work in the dark , to serve the light || 身处黑暗 ，心向光明","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":true}},"local_search":{"enable":true,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":false},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/lgt_logo.svg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               LGT&#39;s blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                主页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               target="_blank" rel="noopener" href="https://github.com/Marcus112-CS"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">主页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       target="_blank" rel="noopener" href="https://github.com/Marcus112-CS">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">MorphNet（2）—— MacOS深度学习</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/lgt_logo.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Guangtong li</span>
+                            
+                                <span class="author-label">Lv1</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-03-02 14:27:16</span>
+        <span class="mobile">2023-03-02 14:27</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2023-03-02 19:59:01</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/MorphNet-%E5%88%86%E6%9E%90/">MorphNet 分析</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/MacOS/">MacOS</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/MorphNet/">MorphNet</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/jupyter/">jupyter</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Tensorflow/">Tensorflow</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/miniconda/">miniconda</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.4k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>5 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <h1 id="MorphNet运行"><a href="#MorphNet运行" class="headerlink" title="MorphNet运行"></a>MorphNet运行</h1><h3 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h3><p>​	morphnet的作用是对网络进行收缩和扩放，在<strong>统一扩放</strong>和<strong>基于特定资源约束的收缩</strong>过程中进行网络训练，在GroupLasso的正则化方法下完成对filter等结构的搜索，从而保证在同等精准度的情况下实现网络结构的精简和优化</p>
+<h3 id="二、平台选择"><a href="#二、平台选择" class="headerlink" title="二、平台选择"></a>二、平台选择</h3><p>​	这里主要实用了ubuntu、MacOS和CoLab进行模型训练，官方代码的测试代码冗余过多，通过官方的dockfile配置环境后无法正常运行model zoo测试，遂转向 .ipynb 文件使用jupyter运行，对测试进行精简，也方便分步调试</p>
+<h4 id="1-ubuntu"><a href="#1-ubuntu" class="headerlink" title="1. ubuntu"></a>1. ubuntu</h4><p>​	使用vscode、miniconda，安装兼容的软件包版本后jupyter notebook 输出字体过大，而vscode没有相关设置</p>
+<p>​	解决方案：</p>
+<p>​	安装jupyter-themes，运行以下代码后解决</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jt -ofs 10</span><br></pre></td></tr></table></figure>
+
+<p>​    导入v1版本tensorflow包时提示chardet包缺失，虚拟环境中安装后又显示循环导入，无法解决该问题</p>
+<h4 id="2-MacOS"><a href="#2-MacOS" class="headerlink" title="2. MacOS"></a>2. MacOS</h4><h5 id="2-1-miniconda安装"><a href="#2-1-miniconda安装" class="headerlink" title="2.1 miniconda安装"></a>2.1 miniconda安装</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">brew install --cask miniconda</span><br><span class="line">conda init</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">conda 默认每次开启终端进入base环境，如果不想要终端自启，可以通过以下指令禁止</span></span><br><span class="line">conda config --set auto_activate_base false</span><br></pre></td></tr></table></figure>
+
+<p>​		miniconda是conda的精简版本，用于管理多种python版本及其软件依赖包组成的虚拟环境。</p>
+<p>​		带有GUI界面的conda更加美观，但内存占用和开销也更大，miniconda没有可视化界面，只能通过命令行控制，更加简洁高效，下面是一些miniconda的基础使用指令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">进入环境和退出环境</span></span><br><span class="line">conda activate 虚拟环境名  # 如果是base环境，可以不加环境名</span><br><span class="line"> conda deactivate         # 退出conda</span><br><span class="line"><span class="meta prompt_"> # </span><span class="language-bash">查看当前虚拟环境中已经安装的软件包及其版本</span></span><br><span class="line"> conda list </span><br><span class="line"><span class="meta prompt_"> # </span><span class="language-bash">安装和卸载所需软件包</span></span><br><span class="line"> conda install 软件包=版本号  # 也可以使用pip/pip3，这里要注意使用当前虚拟环境下的pip，可以用 which pip/which pip3 进行查看	</span><br><span class="line"> conda uninstall 软件包 </span><br><span class="line"><span class="meta prompt_"> # </span><span class="language-bash">创建虚拟环境</span></span><br><span class="line"> conda create -n 虚拟环境名称 python=版本号 软件包=版本号 # 只有python和版本号是必填的软件包设置</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">conda缓存清理</span></span><br><span class="line">conda clean -p   # 删除无用的软件包</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-2-Tensorflow安装（GPU版—适配M系列芯片）"><a href="#2-2-Tensorflow安装（GPU版—适配M系列芯片）" class="headerlink" title="2.2 Tensorflow安装（GPU版—适配M系列芯片）"></a>2.2 Tensorflow安装（GPU版—适配M系列芯片）</h5><p>​		这里碰到的问题比较多，tensorflow针对M系列芯片的Mac之前支持性并不好，只有CPU版本，现在apple developer官方放出了GPU版本的tensorflow，个人结合官网和<a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/474212619" >博客<i class="fas fa-external-link-alt"></i></a>（只能使用miniforge，不能使用miniconda），摸索出Mac GPU版本tensorflow安装教程，并在原博客下方给出了新的安装方法</p>
+<p>​		<strong>准备：</strong></p>
+<ul>
+<li><p>系统版本： MacOS Monterey（12）及以上</p>
+</li>
+<li><p>miniconda ：arm64 version（适配M芯片的版本）</p>
+</li>
+<li><p>python ： 3.8+ （创建虚拟环境时注意）</p>
+<p><strong>开始：</strong></p>
+<ol>
+<li><p>创建虚拟环境</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create -n tf python=3.9.13  # 要求 python 3.9 以上版本</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装apple官方tensorflow依赖包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda activate tf  # 先进入刚刚创建的虚拟环境</span><br><span class="line">conda install -c apple tensorflow-deps</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装gpu版tensorflow</p>
+<p>这里注意安装前要查看到底python3还是python对应的是虚拟环境下的python，使用虚拟环境下的python对应的pip进行安装才能在虚拟环境中使用<strong>（如果你不介意command-line-tool下的python环境和conda虚拟环境乱做一团，也可以不用考虑这个问题，不用安装miniconda，直接在默认全局python种使用pip进行安装也可以）</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">如果不确定使用python3还是python，可以使用<span class="built_in">which</span> python查看路径，使用虚拟环境下的python才有效（一般都是python3）</span></span><br><span class="line">python3 -m pip install tensorflow-macos </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装tensorflow metal</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -m pip install tensorflow-metal</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解决内部软件包版本兼容问题</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">python3     <span class="comment"># 进入当前虚拟环境下的python解释器</span></span></span><br><span class="line">  import tensorflow （这时会出现报错，提示numpy版本不兼容）</span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">解决方案：</span></span><br><span class="line">  exit()      # 先退出python解释器</span><br><span class="line">  conda uninstall numpy</span><br><span class="line">  pip3 install numpy </span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">然后再尝试导入 tensorflow ，成功</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+<h5 id="2-3-jupyter-notebook安装配置"><a href="#2-3-jupyter-notebook安装配置" class="headerlink" title="2.3 jupyter notebook安装配置"></a>2.3 jupyter notebook安装配置</h5><p>​		jupyter notebook 主要用来交互式python编程，方便实时查看输出和运行情况和分享运行结果</p>
+<p>​		很容易，通过一行指令即可进行安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install jupyter notebook # 注意安装到装有tensorflow的虚拟环境中</span><br></pre></td></tr></table></figure>
+
+<p>​		运行时输入指令即可自动在默认浏览器打开</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook   # 运行jupyter notebook</span><br><span class="line">jupyter notebook stop 或者 ctrl + c # 退出</span><br></pre></td></tr></table></figure>
+
+<p>​		当然，你也可以在vscode中进行配置和运行，需要进行如下配置：</p>
+<ul>
+<li><p>安装jupyter官方扩展</p>
+</li>
+<li><p><strong>安装ipykernel软件包</strong></p>
+<p>这一步非常重要，如果发现切换虚拟环境时发现无法链接到虚拟环境对应的kernel，那么很有可能是你没有为虚拟环境安装ipykernel</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install ipykernel</span><br></pre></td></tr></table></figure>
+
+<p>还有另外一种错误可能是，你的vscode中的jupyter扩展出现了问题，回退到上个版本很可能能帮你解决这个问题</p>
+</li>
+</ul>
+<h5 id="2-4-运行-amp-训练"><a href="#2-4-运行-amp-训练" class="headerlink" title="2.4 运行&amp;训练"></a>2.4 运行&amp;训练</h5><p>​	这里显示模型训练的信息，M2芯片（8 CPU + 10 GPU 版本）一个epoch大概要130s ，而且非常烫（因为没风扇）</p>
+<p>​	相比colab要慢很多（23s&#x2F;epoch）</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="http://lgt-blog.oss-cn-nanjing.aliyuncs.com/img/image-20230302%E4%B8%8B%E5%8D%8875342863.png"
+                      alt="image-20230302下午75342863"
+                ></p>
+<p>​		对比发现训练前后，模型结构更加稀疏了，模型适应方法的作用非常显著（下图是训练前后模型结构）</p>
+<p><img  
+                     lazyload
+                     alt="image"
+                     data-src="http://lgt-blog.oss-cn-nanjing.aliyuncs.com/img/image-20230302%E4%B8%8B%E5%8D%8875633934.png"
+                      alt="image-20230302下午75633934"
+                ><img  
+                     lazyload
+                     alt="image"
+                     data-src="http://lgt-blog.oss-cn-nanjing.aliyuncs.com/img/image-20230302%E4%B8%8B%E5%8D%8875658433.png"
+                      alt="image-20230302下午75658433"
+                ></p>
+<h4 id="3-CoLab"><a href="#3-CoLab" class="headerlink" title="3. CoLab"></a>3. CoLab</h4><p>​	相比与以上两个平台，好处是不用考虑相关的软件包依赖问题，且GPU算力强大还免费（16G显存真爽，win本上GTX1650显存才4G）</p>
+<p>​	使用技巧后续再发</p>
+<p>​	</p>
+
+            </div>
+
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/MacOS/">#MacOS</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/MorphNet/">#MorphNet</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/jupyter/">#jupyter</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Tensorflow/">#Tensorflow</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/miniconda/">#miniconda</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/03/02/Blog%E5%9B%BE%E5%BA%8A%E9%85%8D%E7%BD%AE%E2%80%94%E2%80%94PicGo/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">Blog图床配置——PicGo</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/02/23/MorphNet%EF%BC%881%EF%BC%89%E2%80%94%E2%80%94-docker-%E9%85%8D%E7%BD%AE/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">MorphNet（1）—— docker 配置</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MorphNet%E8%BF%90%E8%A1%8C"><span class="nav-number">1.</span> <span class="nav-text">MorphNet运行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E8%BF%B0"><span class="nav-number">1.0.1.</span> <span class="nav-text">一、概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%B9%B3%E5%8F%B0%E9%80%89%E6%8B%A9"><span class="nav-number">1.0.2.</span> <span class="nav-text">二、平台选择</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-ubuntu"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">1. ubuntu</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-MacOS"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">2. MacOS</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-miniconda%E5%AE%89%E8%A3%85"><span class="nav-number">1.0.2.2.1.</span> <span class="nav-text">2.1 miniconda安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-Tensorflow%E5%AE%89%E8%A3%85%EF%BC%88GPU%E7%89%88%E2%80%94%E9%80%82%E9%85%8DM%E7%B3%BB%E5%88%97%E8%8A%AF%E7%89%87%EF%BC%89"><span class="nav-number">1.0.2.2.2.</span> <span class="nav-text">2.2 Tensorflow安装（GPU版—适配M系列芯片）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-jupyter-notebook%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE"><span class="nav-number">1.0.2.2.3.</span> <span class="nav-text">2.3 jupyter notebook安装配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-4-%E8%BF%90%E8%A1%8C-amp-%E8%AE%AD%E7%BB%83"><span class="nav-number">1.0.2.2.4.</span> <span class="nav-text">2.4 运行&amp;训练</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-CoLab"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">3. CoLab</span></a></li></ol></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2023</span> -
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">Guangtong li</a>
+            
+        </div>
+        
+            <script async 
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+
+</body>
+</html>
