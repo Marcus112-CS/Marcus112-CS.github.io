@@ -9,7 +9,7 @@
     
     <title>
         
-            Tag |
+            TFLite Modle Benchmark Tools 使用 |
         
         LGT&#39;s blog
     </title>
@@ -154,15 +154,169 @@
             <div class="main-content">
 
                 
-                    
-    <div class="fade-in-down-animation">
-        <div class="tagcloud-container">
-            <div class="tagcloud-content">
-                <a href="/tags/Homebrew/" style="font-size: 1rem;">Homebrew</a> <a href="/tags/MacOS/" style="font-size: 1.6rem;">MacOS</a> <a href="/tags/MorphNet/" style="font-size: 1.3rem;">MorphNet</a> <a href="/tags/PicGo/" style="font-size: 1rem;">PicGo</a> <a href="/tags/Tensorflow/" style="font-size: 1rem;">Tensorflow</a> <a href="/tags/android/" style="font-size: 1rem;">android</a> <a href="/tags/docker/" style="font-size: 1rem;">docker</a> <a href="/tags/jupyter/" style="font-size: 1rem;">jupyter</a> <a href="/tags/magisk/" style="font-size: 1rem;">magisk</a> <a href="/tags/miniconda/" style="font-size: 1rem;">miniconda</a> <a href="/tags/root%E8%A7%A3%E9%94%81/" style="font-size: 1rem;">root解锁</a> <a href="/tags/ubuntu/" style="font-size: 1rem;">ubuntu</a> <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91OSS/" style="font-size: 1rem;">阿里云OSS</a>
-            </div>
-        </div>
-    </div>
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
 
+            <div class="article-title">
+                <span class="title-hover-animation">TFLite Modle Benchmark Tools 使用</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/lgt_logo.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Guangtong li</span>
+                            
+                                <span class="author-label">Lv1</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-03-02 21:21:52</span>
+        <span class="mobile">2023-03-02 21:21</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2023-03-13 19:51:15</span>
+    </span>
+    
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>412 Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>1 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <p>科学上网，必不可少</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://github.com/Kr328/ClashForAndroid/releases" >https://github.com/Kr328/ClashForAndroid/releases<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://ai-benchmark.com/download.html" >https://ai-benchmark.com/download.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>android、windows等</p>
+<ul>
+<li>查看ADB版本：adb version</li>
+<li>查看手机设备：adb devices</li>
+<li>查看设备型号：adb shell getprop ro.product.model</li>
+<li>查看电池信息：adb shell dumpsys battery</li>
+<li>查看设备ID：adb shell settings get secure android_id</li>
+<li>查看设备IMEI：adb shell dumpsys iphonesubinfo</li>
+<li>查看Android版本：adb shell getprop ro.build.version.release</li>
+<li>查看手机网络信息：adb shell ifconfig</li>
+<li>查看设备日志：adb logcat</li>
+<li>重启手机设备：adb reboot</li>
+<li>安装一个apk：adb install &#x2F;path&#x2F;demo.apk</li>
+<li>卸载一个apk：adb uninstall <package></li>
+<li>查看系统运行进程：adb shell ps</li>
+<li>查看系统磁盘情况：adb shell ls &#x2F;path&#x2F;</li>
+<li>手机设备截屏：adb shell screencap -p &#x2F;sdcard&#x2F;aa.png</li>
+<li>手机文件下载到电脑：adb pull &#x2F;sdcard&#x2F;aa.png .&#x2F;</li>
+<li>电脑文件上传到手机：adb push aa.png &#x2F;data&#x2F;local&#x2F;</li>
+<li>手机设备录像：adb shell screenrecord &#x2F;sdcard&#x2F;ab.mp4</li>
+<li>手机屏幕分辨率：adb shell wm size</li>
+<li>手机屏幕密度：adb shell wm density</li>
+<li>手机屏幕点击：adb shell input tap xvalue yvalue</li>
+<li>手机屏幕滑动：adb shell input swipe 1000 1500 200 200</li>
+<li>手机屏幕带时间滑动：adb shell input swipe 1000 1500 0 0 1000</li>
+<li>手机文本输入：adb shell input text xxxxx</li>
+<li>手机键盘事件：adb shell input keyevent xx</li>
+<li>连接多个手机设备时，指定手机设备：adb -s serialNumber <command></li>
+</ul>
+<p><strong>ADB无线连接</strong></p>
+<ul>
+<li>保证手机和电脑处在同一个无线网络内</li>
+<li>在USB连接的基础上，执行命令【adb tcpip 5555】</li>
+<li>断开USB连接，执行命令【adb connect 192.168.x.x:5555】</li>
+<li>此时执行命令【adb devices】即可查看到连接的手机设备信息</li>
+</ul>
+<h3 id="待整理补坑"><a href="#待整理补坑" class="headerlink" title="待整理补坑"></a>待整理补坑</h3>
+            </div>
+
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2023/03/13/Homebrew%E2%80%94%E2%80%94-MacOS%E8%BD%AF%E4%BB%B6%EF%BC%88%E5%8C%85%EF%BC%89%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">Homebrew—— MacOS软件（包）管理工具</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/03/02/Blog%E5%9B%BE%E5%BA%8A%E9%85%8D%E7%BD%AE%E2%80%94%E2%80%94PicGo/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Blog图床配置——PicGo</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%85%E6%95%B4%E7%90%86%E8%A1%A5%E5%9D%91"><span class="nav-number">1.</span> <span class="nav-text">待整理补坑</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
 
 
                 
@@ -208,6 +362,23 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-bottom-side-tools">
@@ -307,6 +478,14 @@
 
 
 <div class="post-scripts">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
     
 </div>
 

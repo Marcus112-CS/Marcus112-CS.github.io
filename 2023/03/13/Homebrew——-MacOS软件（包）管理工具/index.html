@@ -9,7 +9,7 @@
     
     <title>
         
-            Blog图床配置——PicGo |
+            Homebrew—— MacOS软件（包）管理工具 |
         
         LGT&#39;s blog
     </title>
@@ -159,7 +159,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">Blog图床配置——PicGo</span>
+                <span class="title-hover-animation">Homebrew—— MacOS软件（包）管理工具</span>
             </div>
 
             
@@ -181,15 +181,26 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2023-03-02 16:09:02</span>
-        <span class="mobile">2023-03-02 16:09</span>
+        <span class="pc">2023-03-13 17:33:50</span>
+        <span class="mobile">2023-03-13 17:33</span>
     </span>
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-03-02 16:49:57</span>
+        <span class="pc">2023-03-13 19:50:00</span>
     </span>
     
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/MacOS%E7%94%9F%E4%BA%A7%E5%8A%9B%E9%85%8D%E7%BD%AE/">MacOS生产力配置</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
     
     
         <span class="article-tags article-meta-item">
@@ -197,15 +208,11 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91OSS/">阿里云OSS</a>&nbsp;
+                        <a href="/tags/MacOS/">MacOS</a>&nbsp;
                     </li>
                 
                     <li>
-                        | <a href="/tags/PicGo/">PicGo</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/MacOS/">MacOS</a>&nbsp;
+                        | <a href="/tags/Homebrew/">Homebrew</a>&nbsp;
                     </li>
                 
             </ul>
@@ -215,12 +222,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>514 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>743 Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>1 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>2 Mins</span>
         </span>
     
     
@@ -238,95 +245,61 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <h1 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h1><h3 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h3><p>​	图床是用来解决md文件和html组成的网页图片缺失问题，由于图片资源相比文字的高存储占用，纯文本和图片视频的解耦合能更好得解决这种问题，将图片转为云端链接，更加简单高效。</p>
-<p>​	第三方插件和图床多免费使用，但链接和图片的时效性难以保证，时间一长容易失效，执行购买云端OSS资源进行图床配置是兼顾稳定性和效果的平衡之选。</p>
-<p>​	（即刻图床是我之前使用的，图片2周后失效了，遂转向阿里云图床方案）</p>
-<p><img  
-                     lazyload
-                     alt="image"
-                     data-src="http://lgt-blog.oss-cn-nanjing.aliyuncs.com/img/image-20230302%E4%B8%8B%E5%8D%8842408445.png"
-                      alt="image-20230302下午42408445"
-                ></p>
-<h3 id="二、阿里云OSS购买"><a href="#二、阿里云OSS购买" class="headerlink" title="二、阿里云OSS购买"></a>二、阿里云OSS购买</h3><p>​		点击对象存储OSS<img  
-                     lazyload
-                     alt="image"
-                     data-src="http://lgt-blog.oss-cn-nanjing.aliyuncs.com/img/image-20230302%E4%B8%8B%E5%8D%8842530965.png"
-                      alt="image-20230302下午42530965"
-                ></p>
-<p>​	购买40G包月包2年18块（一顿饭钱的价格感觉还可以🐶）</p>
-<p><img  
-                     lazyload
-                     alt="image"
-                     data-src="http://lgt-blog.oss-cn-nanjing.aliyuncs.com/img/image-20230302%E4%B8%8B%E5%8D%8842821261.png"
-                      alt="image-20230302下午42821261"
-                ></p>
-<p>​	创建Bucket，注意读写权限设置为公共读，服务端加密方式设置为无</p>
-<p><img  
-                     lazyload
-                     alt="image"
-                     data-src="http://lgt-blog.oss-cn-nanjing.aliyuncs.com/img/image-20230302%E4%B8%8B%E5%8D%8843056204.png"
-                      alt="image-20230302下午43056204"
-                ></p>
-<p>​	在对应bucket的文件列表中创建img文件夹（以后要保存图片的位置）</p>
-<p><img  
-                     lazyload
-                     alt="image"
-                     data-src="http://lgt-blog.oss-cn-nanjing.aliyuncs.com/img/image-20230302%E4%B8%8B%E5%8D%8843225216.png"
-                      alt="image-20230302下午43225216"
-                ></p>
-<p>​	概览这里的外网访问和bucket域名是后面要使用的信息</p>
-<p><img  
-                     lazyload
-                     alt="image"
-                     data-src="http://lgt-blog.oss-cn-nanjing.aliyuncs.com/img/image-20230302%E4%B8%8B%E5%8D%8842944167.png"
-                      alt="image-20230302下午42944167"
-                ></p>
-<p>​	Accesskey管理获取相关密钥</p>
-<h3 id="三、PicGo下载-amp-配置"><a href="#三、PicGo下载-amp-配置" class="headerlink" title="三、PicGo下载&amp;配置"></a>三、PicGo下载&amp;配置</h3><h4 id="1-下载"><a href="#1-下载" class="headerlink" title="1. 下载"></a>1. 下载</h4><p>​	<a class="link"   target="_blank" rel="noopener" href="https://github.com/Molunerfinn/picgo/releases" >下载链接<i class="fas fa-external-link-alt"></i></a></p>
-<p>​	这里MacOS可以直接使用以下指令安装</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install --cask picgo</span><br></pre></td></tr></table></figure>
+                <h1 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a>Homebrew</h1><h3 id="一、什么是Homebrew"><a href="#一、什么是Homebrew" class="headerlink" title="一、什么是Homebrew"></a>一、什么是Homebrew</h3><p>​	关于**<a class="link"   target="_blank" rel="noopener" href="https://brew.sh/" >Homebrew<i class="fas fa-external-link-alt"></i></a>**，你可以理解为包管理器，和linux中的apt、yum、pkg相似，但Homebrew的软件源和设计专门针对MacOS进行优化设计。</p>
+<p>​	如果你也是Mac用户，建议你也使用这种软件（包）安装卸载方式，因为mac的定位更多的介于linux和windows之间，没有windows那样强大的生态支持（如果我说App Store一坨答辩你一定会赞同我，很多好用的软件没有上架），CLI操作又不如linux那般灵活，但好在Homebrew为mac提供了丰富的软件生态，让你安装管理软件包和软件都非常便捷。</p>
+<p>​	它的好处是丰富软件生态的同时方便包管理，如果你恰好是编程爱好者，那么它应该是Mac使用中不可或缺的存在</p>
+<h3 id="二、安装"><a href="#二、安装" class="headerlink" title="二、安装"></a>二、安装</h3><p>​	首先要进行外源软件安装许可的配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo spctl --master-disable</span><br></pre></td></tr></table></figure>
 
-<p>​	由于MacOS的软件签名机制，安装后无法打开未签名的软件（会提醒软件已损坏，请移动到垃圾桶），可以使用以下指令绕过限制</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xattr -cr /Applications/PicGo.app</span><br></pre></td></tr></table></figure>
+<p>​	如果你初次接触mac，建议安装Xcode command-line-tools</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcode-select --install </span><br></pre></td></tr></table></figure>
 
-<h4 id="2-配置"><a href="#2-配置" class="headerlink" title="2. 配置"></a>2. 配置</h4><p><img  
-                     lazyload
-                     alt="image"
-                     data-src="http://lgt-blog.oss-cn-nanjing.aliyuncs.com/img/image-20230302%E4%B8%8B%E5%8D%8844007154.png"
-                      alt="image-20230302下午44007154"
-                ></p>
-<p>​	使用（二）步骤中的相关信息进行填写后设为默认图床即可</p>
-<p>​	<strong>注意⚠️：</strong></p>
+<p>​	安装非常简单，一行指令搞定</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">根据Mac终端 shell 选择 shell location （MacOS自12版本以后好像都是zsh了，不再默认bash）</span></span><br><span class="line">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="三、常见使用场景及相关指令"><a href="#三、常见使用场景及相关指令" class="headerlink" title="三、常见使用场景及相关指令"></a>三、常见使用场景及相关指令</h3><p>​	在开始使用之前先明确Homebrew的资源分类为两种</p>
 <ul>
-<li>keyid和keysecret是Accesskey内容</li>
-<li>bucket为bucket的名称</li>
-<li>存储区域注意要去掉后面的后缀（aliyun.com）</li>
-<li>自定义域名即为http:&#x2F;&#x2F;[ Bucket域名 ]</li>
+<li>Formulae	就类似于cmake之类的软件包都是Formulae</li>
+<li>Cask            我们常规说理解的可视化软件都是Cask（但是很多软件会提供带GUI和不带GUI两种版本，都是cask分类，可以自行选择）</li>
 </ul>
-<h3 id="四、Typora联动"><a href="#四、Typora联动" class="headerlink" title="四、Typora联动"></a>四、Typora联动</h3><p>​	打开typora -&gt; settings -&gt; 图像 -&gt; <strong>上传服务</strong></p>
+<p>​	下面就是常见的场景和指令了</p>
+<ol>
+<li><p>查询及安装</p>
+<p>如果你想安装notion，但是不确定homebrew中是否有这一软件，可以通过以下指令查询：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew search notion</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以根据查询结果进行选择安装了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew install cmake		# 安装Formulae的指令</span><br><span class="line">brew install --cask notion		# 安装Cask的指令</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>卸载</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew uninstall [formulae|cask name]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询可更新软件包及更新</p>
+<p>更新之前要先自行 </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew update</span><br></pre></td></tr></table></figure>
+
+<p>这是为了更新brew中的资源链接和位置信息</p>
+<p>这里要注意的是，homebrew的管理逻辑是，不提供自动更新服务，官网给出的理由是github源版本和软件内部的更新选项可能会发生冲突，如果要通过指令更新需要加强制查询指令（找了半个多小时才在官网发现原来是这个原因，CSDN啥也不是，真捞）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew outdated --cask --greedy</span><br></pre></td></tr></table></figure>
+
 <p><img  
                      lazyload
                      alt="image"
-                     data-src="http://lgt-blog.oss-cn-nanjing.aliyuncs.com/img/image-20230302%E4%B8%8B%E5%8D%8844445679.png"
-                      alt="image-20230302下午44445679"
+                     data-src="http://lgt-blog.oss-cn-nanjing.aliyuncs.com/img/image-20230313%E4%B8%8B%E5%8D%8861300661.png"
+                      alt="image-20230313下午61300661"
                 ></p>
-<p>​	选择PicGo.app</p>
-<p>​	点击验证图片上床选项</p>
-<p><img  
-                     lazyload
-                     alt="image"
-                     data-src="http://lgt-blog.oss-cn-nanjing.aliyuncs.com/img/image-20230302%E4%B8%8B%E5%8D%8844543971.png"
-                      alt="image-20230302下午44543971"
-                ></p>
-<p>​	使用方法</p>
-<p><img  
-                     lazyload
-                     alt="image"
-                     data-src="http://lgt-blog.oss-cn-nanjing.aliyuncs.com/img/image-20230302%E4%B8%8B%E5%8D%8844801957.png"
-                      alt="image-20230302下午44801957"
-                ></p>
-<p>​	点解上传所有本地图片即可，注意不要将文件重复上传（图片文件名称不能一致）</p>
-<p>​	<strong>Done</strong></p>
+<p>这里假如我要升级notion，执行如下指令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew upgrade notion</span><br></pre></td></tr></table></figure>
+
+<p>更新过程完全自动，不会丢失相关配置信息的</p>
+</li>
+<li><p>显示所有已安装包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew list   # 会显示所有的Formulae和Cask</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>清理</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew cleanup --prune=0</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="四、软件定位"><a href="#四、软件定位" class="headerlink" title="四、软件定位"></a>四、软件定位</h3><p>​	Homebrew作为一款包管理工具，能很好的替代App Store拉胯的软件生态和管理方式，很适合作为Mac的软件源。</p>
 
             </div>
 
@@ -336,15 +309,11 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91OSS/">#阿里云OSS</a>&nbsp;
-                        </li>
-                    
-                        <li class="tag-item">
-                            <a href="/tags/PicGo/">#PicGo</a>&nbsp;
-                        </li>
-                    
-                        <li class="tag-item">
                             <a href="/tags/MacOS/">#MacOS</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Homebrew/">#Homebrew</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -353,29 +322,14 @@
             
                 <div class="article-nav">
                     
-                        <div class="article-prev">
-                            <a class="prev"
-                               rel="prev"
-                               href="/2023/03/02/TFLite-Modle-Benchmark-Tools-%E4%BD%BF%E7%94%A8/"
-                            >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                                <span class="title flex-center">
-                                <span class="post-nav-title-item">TFLite Modle Benchmark Tools 使用</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                            </a>
-                        </div>
-                    
                     
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2023/03/02/MorphNet%EF%BC%882%EF%BC%89%E2%80%94%E2%80%94-MacOS%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"
+                               href="/2023/03/02/TFLite-Modle-Benchmark-Tools-%E4%BD%BF%E7%94%A8/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">MorphNet（2）—— MacOS深度学习</span>
+                                <span class="post-nav-title-item">TFLite Modle Benchmark Tools 使用</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                                 <span class="right arrow-icon flex-center">
@@ -394,7 +348,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E5%BA%8A"><span class="nav-number">1.</span> <span class="nav-text">图床</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%AE%80%E4%BB%8B"><span class="nav-number">1.0.1.</span> <span class="nav-text">一、简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%98%BF%E9%87%8C%E4%BA%91OSS%E8%B4%AD%E4%B9%B0"><span class="nav-number">1.0.2.</span> <span class="nav-text">二、阿里云OSS购买</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81PicGo%E4%B8%8B%E8%BD%BD-amp-%E9%85%8D%E7%BD%AE"><span class="nav-number">1.0.3.</span> <span class="nav-text">三、PicGo下载&amp;配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%B8%8B%E8%BD%BD"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">1. 下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E9%85%8D%E7%BD%AE"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">2. 配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81Typora%E8%81%94%E5%8A%A8"><span class="nav-number">1.0.4.</span> <span class="nav-text">四、Typora联动</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Homebrew"><span class="nav-number">1.</span> <span class="nav-text">Homebrew</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AFHomebrew"><span class="nav-number">1.0.1.</span> <span class="nav-text">一、什么是Homebrew</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85"><span class="nav-number">1.0.2.</span> <span class="nav-text">二、安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%B8%B8%E8%A7%81%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E5%8F%8A%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4"><span class="nav-number">1.0.3.</span> <span class="nav-text">三、常见使用场景及相关指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E8%BD%AF%E4%BB%B6%E5%AE%9A%E4%BD%8D"><span class="nav-number">1.0.4.</span> <span class="nav-text">四、软件定位</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
 
